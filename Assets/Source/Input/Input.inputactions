@@ -31,7 +31,7 @@
                     "path": "<Pointer>/press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Default",
                     "action": "Primary Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -39,10 +39,10 @@
                 {
                     "name": "",
                     "id": "4cd181e7-6c0d-42d3-ae61-2c7997382892",
-                    "path": "<Pointer>/delta",
+                    "path": "<Pointer>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Default",
                     "action": "Drag",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -54,7 +54,28 @@
         {
             "name": "Default",
             "bindingGroup": "Default",
-            "devices": []
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Pointer>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Touchscreen>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }
