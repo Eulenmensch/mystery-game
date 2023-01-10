@@ -1,0 +1,60 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "Navigation",
+            "id": "210d4f81-dc0c-450b-83d6-84cdb2bb0509",
+            "actions": [
+                {
+                    "name": "Primary Click",
+                    "type": "Button",
+                    "id": "a587764a-7375-4abf-ab1c-d50829286613",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Drag",
+                    "type": "Value",
+                    "id": "6d74fa13-acd1-482a-8046-dfc65e1d9fd7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4c6fb0e6-0e2e-4aa6-9ac9-41cdba6219df",
+                    "path": "<Pointer>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Primary Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4cd181e7-6c0d-42d3-ae61-2c7997382892",
+                    "path": "<Pointer>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Default",
+            "bindingGroup": "Default",
+            "devices": []
+        }
+    ]
+}
