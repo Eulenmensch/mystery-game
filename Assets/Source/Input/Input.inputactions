@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Zoom",
+                    "type": "Value",
+                    "id": "486e6205-9b19-4bb0-828b-9d713f0e13a5",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -31,7 +40,7 @@
                     "path": "<Pointer>/press",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Default",
+                    "groups": "Mouse and Keyboard;Touch",
                     "action": "Primary Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -42,18 +51,62 @@
                     "path": "<Pointer>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Default",
+                    "groups": "Mouse and Keyboard;Touch",
                     "action": "Drag",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dca089c1-e11d-45e4-b88c-8404f52aeb9a",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "Clamp(min=-1,max=1)",
+                    "groups": "Mouse and Keyboard",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Pinching",
+                    "id": "278cf3c1-ec99-4aa2-b96f-a7e02a1a26d0",
+                    "path": "Pinching(PositiveScale=0.15)",
+                    "interactions": "",
+                    "processors": "Clamp(min=-1,max=1)",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "FirstTouch",
+                    "id": "9a34c702-e33a-4468-9de2-8d2ae86e4809",
+                    "path": "<Touchscreen>/touch0",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "SecondTouch",
+                    "id": "a649822d-83f0-4beb-8ed0-4a7f0277dce7",
+                    "path": "<Touchscreen>/touch1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Touch",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
     ],
     "controlSchemes": [
         {
-            "name": "Default",
-            "bindingGroup": "Default",
+            "name": "Mouse and Keyboard",
+            "bindingGroup": "Mouse and Keyboard",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
@@ -69,10 +122,21 @@
                     "devicePath": "<Pointer>",
                     "isOptional": false,
                     "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Touch",
+            "bindingGroup": "Touch",
+            "devices": [
+                {
+                    "devicePath": "<Pointer>",
+                    "isOptional": false,
+                    "isOR": false
                 },
                 {
                     "devicePath": "<Touchscreen>",
-                    "isOptional": true,
+                    "isOptional": false,
                     "isOR": false
                 }
             ]
