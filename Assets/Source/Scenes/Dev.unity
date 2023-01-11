@@ -197,6 +197,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6d74fa13-acd1-482a-8046-dfc65e1d9fd7
     m_ActionName: Navigation/Drag[/Mouse/delta,/Pen/delta,/Simulated Touchscreen/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1253644931}
+        m_TargetAssemblyTypeName: CameraZoomController, Assembly-CSharp
+        m_MethodName: HandleZoomInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 486e6205-9b19-4bb0-828b-9d713f0e13a5
+    m_ActionName: Navigation/Zoom[/Mouse/scroll/y]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Navigation
@@ -475,6 +491,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253644930}
   - component: {fileID: 1253644929}
+  - component: {fileID: 1253644931}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -536,6 +553,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1253644931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253644928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5424c348ac324b40834c86a45903a87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minZoom: 0.1
+  maxZoom: 10
+  zoomSmoothingTime: 0.4
+  virtualCamera: {fileID: 1253644929}
 --- !u!1 &1479036455
 GameObject:
   m_ObjectHideFlags: 3
@@ -691,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb708ce706122fe4a8816850bde7200c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSmoothing: 0.7
+  panSmoothingTime: 0.7
 --- !u!1 &2046186420
 GameObject:
   m_ObjectHideFlags: 0
