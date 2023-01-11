@@ -565,9 +565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5424c348ac324b40834c86a45903a87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minZoom: 0.1
+  minZoom: 2
   maxZoom: 10
-  zoomSmoothingTime: 0.4
+  zoomSmoothingTime: 0.12
   virtualCamera: {fileID: 1253644929}
 --- !u!1 &1479036455
 GameObject:
