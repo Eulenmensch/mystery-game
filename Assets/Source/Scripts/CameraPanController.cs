@@ -7,6 +7,8 @@ using DG.Tweening.Plugins.Options;
 public class CameraPanController : MonoBehaviour
 {
     [field: SerializeField] private float panSmoothingTime;
+    [SerializeField] private BoxCollider2D bounds;
+    
 
     private bool isPressed;
     private Vector2 lastPos;
@@ -20,6 +22,12 @@ public class CameraPanController : MonoBehaviour
     }
 
     private void Update()
+    {
+        ApplyCameraInertia();
+        HandleCameraBounds();
+    }
+
+    private void ApplyCameraInertia()
     {
         transform.position += (Vector3)cameraInertia * Time.deltaTime;
     }
@@ -35,11 +43,22 @@ public class CameraPanController : MonoBehaviour
         tween = DOTween.To(() => cameraInertia, x => cameraInertia = x, Vector2.zero, panSmoothingTime);
     }
 
+    private void HandleCameraBounds()
+    {
+        var position = transform.position;
+        
+        if (!bounds.OverlapPoint(transform.position))
+        {
+            tween.Kill();
+            cameraInertia = Vector2.zero;
+            transform.position = bounds.ClosestPoint(position);
+        }
+    }
+
     public void HandleDragInput(InputAction.CallbackContext _context)
     {
         var currentPos = _context.ReadValue<Vector2>();
         Vector2 delta = lastPos - (Vector2)mainCamera.ScreenToWorldPoint(currentPos);
-        // Debug.Log("origin " + lastPos + " to current " + currentPos + " equals a delta of " + delta);
 
         if (isPressed)
         {
