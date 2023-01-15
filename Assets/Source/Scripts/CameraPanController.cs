@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
@@ -8,12 +9,15 @@ public class CameraPanController : MonoBehaviour
 {
     [field: SerializeField] private float panSmoothingTime;
     [SerializeField] private BoxCollider2D bounds;
+    [SerializeField] private int multiplier;
     
-
     private bool isPressed;
+    private Vector2 dragStartPos;
     private Vector2 lastPos;
-    private Vector2 cameraInertia;
+    private float lastFrame;
     private Camera mainCamera;
+    private Vector2 cameraInertia;
+    private Vector2 cameraVelocity;
     private TweenerCore<Vector2, Vector2, VectorOptions> tween;
 
     private void Awake()
@@ -58,12 +62,19 @@ public class CameraPanController : MonoBehaviour
     public void HandleDragInput(InputAction.CallbackContext _context)
     {
         var currentPos = _context.ReadValue<Vector2>();
-        Vector2 delta = lastPos - (Vector2)mainCamera.ScreenToWorldPoint(currentPos);
-
+        var currentFrame = Time.frameCount;
+        Vector2 delta = dragStartPos - (Vector2)mainCamera.ScreenToWorldPoint(currentPos);
+        // Debug.Log(delta);
         if (isPressed)
         {
             Pan(delta);
         }
+        
+        var mouseDelta = mainCamera.ScreenToWorldPoint(lastPos) - mainCamera.ScreenToWorldPoint(currentPos);
+        var frameDelta = currentFrame - lastFrame;
+        cameraVelocity = mouseDelta/frameDelta * multiplier;
+        lastPos = currentPos;
+        lastFrame = currentFrame;
     }
 
     public void HandlePressInput(InputAction.CallbackContext _context)
@@ -73,14 +84,14 @@ public class CameraPanController : MonoBehaviour
             tween.Kill();
             cameraInertia = Vector2.zero;
             isPressed = true;
-            lastPos = Pointer.current.position.ReadValue();
-            lastPos = mainCamera.ScreenToWorldPoint(lastPos);
+            dragStartPos = Pointer.current.position.ReadValue();
+            dragStartPos = mainCamera.ScreenToWorldPoint(dragStartPos);
         }
 
         if (_context.canceled)
         {
             isPressed = false;
-            HandleCameraInertia(mainCamera.velocity);
+            HandleCameraInertia(cameraVelocity);
         }
     }
 }
