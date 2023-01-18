@@ -36,8 +36,10 @@ public class CameraZoomController : MonoBehaviour
 			return;
 		}
 
-		DOTween.To(() => cameraZoom, x => cameraZoom = x, zoomTarget, zoomSmoothingTime);
+		DOTween.To(() => cameraZoom, x => cameraZoom = x, zoomTarget, zoomSmoothingTime).OnUpdate(
+			() => CameraEventSystem.Instance.UpdateZoomValue(cameraZoom));
 	}
+
 
 	private void LateUpdate()
 	{
