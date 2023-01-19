@@ -19,6 +19,10 @@ public class CameraZoomFlagManager : MonoBehaviour
 	}
 	#endregion
 
+	[SerializeField] private VisibilityFlag streetViewFlag;
+	[SerializeField] private VisibilityFlag floorPlanViewFlag;
+	[SerializeField] private VisibilityFlag interiorViewFlag;
+
 	private void OnEnable()
 	{
 		CameraEventSystem.Instance.OnZoom += SetZoomFlags;

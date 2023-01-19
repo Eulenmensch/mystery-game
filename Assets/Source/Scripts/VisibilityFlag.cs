@@ -8,6 +8,7 @@ public class VisibilityFlag : ScriptableObject
 	public void SetFlag(bool _isTrue)
 	{
 		isTrue = _isTrue;
+		FlagEventSystem.Instance.ChangeFlag(this, _isTrue);
 	}
 
 	public bool IsTrue()

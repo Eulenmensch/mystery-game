@@ -21,5 +21,4 @@ public class CameraEventSystem : MonoBehaviour
 
 	public event Action<float> OnZoom;
 	public void UpdateZoomValue(float _zoomValue){OnZoom?.Invoke(_zoomValue);}
-	
 }

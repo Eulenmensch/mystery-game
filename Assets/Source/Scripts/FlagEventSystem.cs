@@ -19,6 +19,6 @@ public class FlagEventSystem : MonoBehaviour
 	}
 	#endregion
 
-	public event Action<bool> OnFlagChanged;
-	public void ChangeFlag(bool _isTrue){OnFlagChanged?.Invoke(_isTrue);}
+	public event Action<VisibilityFlag,bool> OnFlagChanged;
+	public void ChangeFlag(VisibilityFlag _flag, bool _isTrue){OnFlagChanged?.Invoke(_flag,_isTrue);}
 }
