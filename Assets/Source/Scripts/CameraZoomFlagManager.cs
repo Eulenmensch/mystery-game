@@ -1,4 +1,4 @@
-﻿using System;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 
 public class CameraZoomFlagManager : MonoBehaviour
@@ -18,11 +18,23 @@ public class CameraZoomFlagManager : MonoBehaviour
 		}
 	}
 	#endregion
+	[SerializeField, HorizontalGroup("Street View")]
+	private VisibilityFlag streetViewFlag;
+	[SerializeField, HorizontalGroup("Street View"), HideLabel, LabelWidth(20)]
+	private float streetViewThreshold;
 
-	[SerializeField] private VisibilityFlag streetViewFlag;
-	[SerializeField] private VisibilityFlag floorPlanViewFlag;
-	[SerializeField] private VisibilityFlag interiorViewFlag;
+	[SerializeField, HorizontalGroup("Floor Plan View")]
+	private VisibilityFlag floorPlanViewFlag;
+	[SerializeField, HorizontalGroup("Floor Plan View"), HideLabel, LabelWidth(20)] 
+	private float floorPlanViewThreshold;
+	
+	[SerializeField, HorizontalGroup("Interior View")] 
+	private VisibilityFlag interiorViewFlag;
+	[SerializeField, HorizontalGroup("Interior View"), HideLabel, LabelWidth(20)] 
+	private float interiorViewThreshold;
 
+	private VisibilityFlag[] flags;
+	
 	private void OnEnable()
 	{
 		CameraEventSystem.Instance.OnZoom += SetZoomFlags;
@@ -33,8 +45,26 @@ public class CameraZoomFlagManager : MonoBehaviour
 		CameraEventSystem.Instance.OnZoom -= SetZoomFlags;
 	}
 
+	private void Start()
+	{
+		flags = new[] { streetViewFlag, floorPlanViewFlag, interiorViewFlag };
+	}
+
 	private void SetZoomFlags(float _zoomValue)
 	{
-		Debug.Log(_zoomValue);
+		if(_zoomValue >= streetViewThreshold)
+			SetActiveFlag(streetViewFlag);
+		else if (_zoomValue >= floorPlanViewThreshold)
+			SetActiveFlag(floorPlanViewFlag);
+		else 
+			SetActiveFlag(interiorViewFlag);
+	}
+
+	private void SetActiveFlag(VisibilityFlag _activeFlag)
+	{
+		foreach (var flag in flags)
+		{
+			flag.SetFlag(flag == _activeFlag);
+		}
 	}
 }

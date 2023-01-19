@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class VisibilityController : MonoBehaviour
@@ -22,6 +21,7 @@ public class VisibilityController : MonoBehaviour
 
 	private void SetVisibility(VisibilityFlag _flag, bool _spriteVisible)
 	{
-		sprite.enabled = _spriteVisible;
+		if (flag == _flag)
+			sprite.enabled = _spriteVisible;	
 	}
 }

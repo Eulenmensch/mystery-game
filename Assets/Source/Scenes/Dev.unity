@@ -680,8 +680,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   streetViewFlag: {fileID: 11400000, guid: 557f343c5a8f57548ae1986b728920af, type: 2}
+  streetViewThreshold: 7
   floorPlanViewFlag: {fileID: 11400000, guid: 35c8b3a03e0705349a9ab2b88b9fcbb7, type: 2}
+  floorPlanViewThreshold: 4
   interiorViewFlag: {fileID: 11400000, guid: c3e6d97ed3a53d34cb6b209383e515ad, type: 2}
+  interiorViewThreshold: 0
 --- !u!4 &988481622
 Transform:
   m_ObjectHideFlags: 0
@@ -707,6 +710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1215383094}
   - component: {fileID: 1215383093}
+  - component: {fileID: 1215383095}
   m_Layer: 0
   m_Name: Interior
   m_TagString: Untagged
@@ -781,6 +785,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1215383095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215383092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7eac18497ef4f37beba6cd0887a9c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flag: {fileID: 11400000, guid: 35c8b3a03e0705349a9ab2b88b9fcbb7, type: 2}
 --- !u!1 &1253644928
 GameObject:
   m_ObjectHideFlags: 0
